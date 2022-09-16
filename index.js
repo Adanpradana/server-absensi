@@ -19,13 +19,14 @@ router.get("/", (req, res) => {
 //   return res.status(200).json(user);
 // });
 router.get("/main-api/v1/employee", (req, res) => {
-  for (let data of datas) return res.status(200).json(data._attributes);
+  const users = datas.map((data) => data._attributes);
+  res.status(200).json(users);
 });
 
-router.get("/main-api/v1/employee/:id", (req, res) => {
-  const { id } = req.params;
+router.get("/main-api/v1/employee/:dbg_pegawaipegawai_pin", (req, res) => {
+  const { dbg_pegawaipegawai_pin } = req.params;
   for (let data of datas) {
-    if (data._attributes.dbg_pegawaipegawai_nip == id) {
+    if (data._attributes.dbg_pegawaipegawai_pin == dbg_pegawaipegawai_pin) {
       return res.status(200).json(data._attributes);
     }
   }
